@@ -1,0 +1,89 @@
+/*
+FRANKLIN KARIUKI
+CT101/G/22924/24
+This is a java program that demonstrates encapsulation using car application system
+
+*/
+
+
+import java.util.Scanner;
+
+//creating a class car
+
+class Car {
+    
+    private String licensePlate;
+
+    private boolean isRented;
+
+    //  seting the license plate when the car is created
+
+    public Car(String licensePlate)
+{
+        this.licensePlate = licensePlate;
+        this.isRented = false; // By default, the car is not rented
+    }
+
+    //  renting the car
+    public void rentCar() {
+        if (!isRented) {
+            isRented = true;
+            System.out.println("Car with license plate: " + licensePlate + " has been rented");
+        } else {
+            System.out.println("Car with license plate: " + licensePlate + "  already rented");
+        }
+    }
+
+    //  return the car method
+
+    public void returnCar() {
+        if (isRented) {
+            isRented = false;
+            System.out.println("Car with license plate: " + licensePlate + " has been returned");
+        } else {
+            System.out.println("Car with license plate: " + licensePlate + " was not rented");
+        }
+    }
+
+    // Getter method checks if the car is rented and for license plate
+
+    public boolean isCarRented()
+{
+        return isRented;
+    }
+
+    
+    public String getLicensePlate() 
+{
+        return licensePlate;
+    }
+}
+
+public class carApplicationEncapsulation {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        // requesting the user to enter the license plate
+
+        System.out.print("Enter the license plate of the car: ");
+
+        String licensePlate = scanner.nextLine();
+
+        Car car1 = new Car(licensePlate);
+
+        car1.rentCar();
+
+        // Attempting to rent the car again
+        car1.rentCar();
+
+        // Returning the car
+        car1.returnCar();
+
+        // Attempting to return the car again
+        car1.returnCar();
+
+        scanner.close();
+    }
+}
