@@ -1,0 +1,85 @@
+/*
+FRANKLIN KARIUKI
+CT101/G/22924/24
+JAVA PROGRAM THAT DEMONSTRATES THE PRINCIPLE OF ENCAPSULATION USING AN EXAMPLE OF A BANKING SYSTEM 
+*/
+
+import java.util.Scanner;
+
+
+class BankAccount{
+    
+    private double balance;
+
+    public BankAccount(double initialBalance){
+        if(initialBalance >= 0){
+            balance=initialBalance;
+        }
+        else{
+            balance=0;
+        }
+        }
+
+    //public method to get the balance
+
+    public double getBalance(){
+        return balance;
+    }
+
+
+
+    // depositing money
+    public void deposit(double amount){        
+        if(amount<=0){
+            System.out.println("Invalid deposit amount" + amount); 
+        }
+        else{
+            balance += amount;
+        }
+    }
+
+    // withdrawing money with conditional if
+    public void withdraw(double amount){
+        if(amount<= 0){
+            System.out.println("INVALID AMOUNT");
+        }
+        else if(amount>balance){
+            System.out.println("Insufficient balance!");
+        }
+        else{
+            balance -=amount;
+        }
+    }
+}
+
+public class bankSystemEncapsulation{
+    public static void main(String[] args){
+        BankAccount account=new BankAccount(1000);
+        
+        //accessing the bank account balance
+        
+        System.out.println("initial Balance: " + account.getBalance());
+
+        //Depositing funds and using scanner to collect the amount to be deposited
+        Scanner input=new Scanner(System.in);
+
+        System.out.println("Enter the amount to deposit INITIAL BALANCE IS 1000:");
+        double amount =input.nextDouble();
+
+        account.deposit(amount);
+        System.out.println("You deposited " + amount + " your new account balance is: " + account.getBalance());
+
+        //withdrawing  money 
+        System.out.println("Enter the funds you want to withdraw: ");
+        amount=input.nextDouble();
+        
+        account.withdraw(amount);
+        System.out.println("You withdrew: " + amount + "Your new account balance is: " + account.getBalance());
+
+       sc.close();
+
+    }
+    
+
+    
+}
